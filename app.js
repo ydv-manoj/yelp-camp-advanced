@@ -40,7 +40,7 @@ app.set("routes", path.join(__dirname, "routes"));
 
 // PASSPORT CONFIG
 app.use(
-  require("express-session")({
+  require("cookie-session")({
     secret: "shibas are the best dogs in the world.",
     resave: false,
     saveUninitialized: false
