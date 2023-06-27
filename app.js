@@ -66,7 +66,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 app.get("*", function(req, res) {
   res.render("error");
-});
+}); 
 
 app.listen( 3000, function() {
   console.log("listening on http://localhost:3000/");
