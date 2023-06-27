@@ -1,3 +1,4 @@
+var path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 var express = require("express"),
@@ -18,7 +19,7 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 mongoose.connect(
-  "mongodb+srv://yadav_manoj123:Mrrao13@cluster1.mijgd.mongodb.net/?retryWrites=true&w=majority",
+  process.env.DATABASE_URL,
   { useNewUrlParser: true ,
     useUnifiedTopology: true}
 );
@@ -28,6 +29,14 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
+
+app.set("views", path.join(__dirname, "views"));
+app.set("middleware", path.join(__dirname, "middleware"));
+app.set("routes", path.join(__dirname, "routes"));
+
+
+
 
 // PASSPORT CONFIG
 app.use(
@@ -59,6 +68,6 @@ app.get("*", function(req, res) {
   res.render("error");
 });
 
-app.listen(3000, function() {
+app.listen( 3000, function() {
   console.log("listening on http://localhost:3000/");
 });
