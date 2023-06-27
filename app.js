@@ -19,7 +19,7 @@ var commentRoutes = require("./routes/comments"),
   indexRoutes = require("./routes/index");
 
 mongoose.connect(
-  process.env.DATABASE_URL,
+  "mongodb+srv://yadav_manoj123:Mrrao13@cluster1.mijgd.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true ,
     useUnifiedTopology: true}
 );
@@ -66,7 +66,7 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 app.get("*", function(req, res) {
   res.render("error");
-}); 
+});
 
 app.listen( 3000, function() {
   console.log("listening on http://localhost:3000/");
